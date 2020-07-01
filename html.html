@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
+    <style lang="scss">
         .newq {
             background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
             background-size: 100% 100%;
@@ -13,9 +13,14 @@
             background-image: linear-gradient( red 10%, yellow 20%, blue);
         }
         .test3{
-            border: 100px solid;
+            border: 50px solid;
             border-image-source: url(./timg.jpg);
             border-image-slice: 400;
+        }
+        .test4{
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient  4s ease infinite;
         }
 
         @keyframes gradient {
@@ -30,20 +35,30 @@
             }
         }
 
+        /*按钮渐变*/
+
 
 
     </style>
 </head>
 <body>
-1
+1\  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 <div class="newq" style="width: 200px; height: 200px;">
 </div>
-2
+2\  background-image: linear-gradient( red 10%, yellow 20%, blue);
 <div style="width: 200px; height: 200px;" class="test2">
 </div>
-3
-<div class="test3" style="width: 200px; height: 200px;">
+3\  border-image-slice: 400;
+<div class="test3" style="width: 100px; height: 100px;">
 </div>
+
+4、animation和上面linear-gradient联合起来，是的页面背景渐变且美观,将时间调大一点，显得过度的更好
+<div class="test4" style="width: 200px; height: 200px;">
+</div>
+
+5、button 样式
+<a href="https://codepen.io/ARS" target="_blank"><span>button</span></a>
+
 
 
 </body>

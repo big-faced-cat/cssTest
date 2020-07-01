@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下载按钮动态效果</title>
+    <style>
+        @keyframes circle {
+
+            0%,
+            15%,
+            45%,
+            75% {
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+
+            30%,
+            60%,
+            90% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes dot {
+            8% {
+                transform: scale(0);
+            }
+
+            16% {
+                transform: scale(1) rotate(30deg) translateX(48px);
+            }
+
+            95% {
+                transform: scale(1) rotate(1000deg) translateX(48px);
+            }
+
+            100% {
+                transform: scale(0.125) rotate(1050deg) translate(52px, -6px);
+            }
+        }
+
+        body {
+            background-color: #000;
+        }
+
+        .button {
+            display: block;
+            width: 160px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            outline: none;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .button::before,
+        .button::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+        }
+
+        .button::before {
+            width: 100%;
+            height: 100%;
+            background-color: #6D58FF;
+            border-radius: 10px;
+
+            transform: translate(-50%, -50%);
+            transform-origin: 50% 50%;
+
+            transition: all .5s;
+        }
+
+        .button:focus::before {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            animation: circle 3s linear forwards;
+        }
+
+        .button span {
+            position: relative;
+            /* z-index必须要在开启定位后才能使用 */
+            z-index: 1;
+        }
+
+        .button:focus span {
+            display: none;
+        }
+
+        .button::after {
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            z-index: 2;
+            border-radius: 50%;
+            transform: scale(0);
+            transform-origin: 0% 0%;
+        }
+
+        .button:focus::after {
+            animation: dot 3s linear forwards;
+        }
+
+        .button svg {
+            width: 15px;
+            height: 13px;
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            stroke: #fff;
+            stroke-width: 2px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            transform: translate(-50%, -50%);
+            stroke-dasharray: 17px;
+            stroke-dashoffset: 17px;
+            transition: stroke-dashoffset .3s ease;
+            transition-delay: 3s;
+        }
+
+        .button:focus svg {
+            stroke-dashoffset: 34px;
+        }
+    </style>
+</head>
+
+<body>
+<!-- 实现按钮效果 -->
+<button class="button">
+    <span>下载</span>
+    <svg viewBox="0 0 15 13">
+        <polyline points="2 6.5 6 10.5 13 2.5"></polyline>
+    </svg>
+</button>
+</body>
+
+</html>
